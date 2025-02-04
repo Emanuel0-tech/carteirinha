@@ -7,10 +7,11 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
-  ScrollView
+  ScrollView,
+  SafeAreaView
 } from 'react-native';
 
-
+import minhaFoto from './assets/profile/face.jpg';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -35,7 +36,7 @@ function LoginScreen({ navigation }) {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.headerArea}>
         <Text style={styles.headerTitle}>Login</Text>
       </View>
@@ -81,7 +82,7 @@ function LoginScreen({ navigation }) {
           </TouchableOpacity>
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -196,8 +197,7 @@ function CarteirinhaScreen() {
       <ScrollView style={styles.contentArea}>
         <View style={{ alignItems: 'center', marginBottom: 20 }}>
           <Image
-            source={{ uri: 'https://via.placeholder.com/100x100.png?text=Foto' }}
-            style={styles.profileImage}
+            source={minhaFoto} style={styles.profileImage}
           />
           <Text style={{ marginTop: 10, fontSize: 18, fontWeight: 'bold' }}>
             AMANDA COSTA LIMA
@@ -297,14 +297,15 @@ const styles = StyleSheet.create({
   headerArea: {
     backgroundColor: COLORS.primary,
     paddingVertical: 18,
-    borderBottomLeftRadius: 25,
-    borderBottomRightRadius: 25,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
     alignItems: 'center'
   },
   headerTitle: {
-    color: COLORS.white,
+    color: COLORS.white,  
     fontSize: 20,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginTop: 15
   },
   contentArea: {
     flex: 1,
@@ -349,9 +350,14 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   profileImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 50
+    width: 160,
+    height: 160,
+    borderRadius: 90, 
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.15,
+    shadowRadius: 5,
+    elevation: 3,
   },
   infoCard: {
     backgroundColor: COLORS.white,
