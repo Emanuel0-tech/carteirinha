@@ -15,6 +15,7 @@ import minhaFoto from './assets/profile/face.jpg';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from 'react-native-vector-icons';
 
 
 const COLORS = {
@@ -221,6 +222,7 @@ function CarteirinhaScreen() {
           <Text style={{ marginBottom: 2 }}>Nome: Amanda Costa Lima</Text>
           <Text>Instituição: Universidade XYZ</Text>
           <Text>Curso: Direito</Text>
+          <Text>CÓD. do Cartão: 000000000000000--1</Text>
           <Text>Validade: MARÇO DE 2025</Text>
         </View>
       </ScrollView>
@@ -252,10 +254,10 @@ function MainTabs() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: COLORS.primary,
-        tabBarInactiveTintColor: '#999',
+        tabBarActiveTintColor: COLORS.white,
+        tabBarInactiveTintColor: COLORS.grayText,
         tabBarStyle: {
-          backgroundColor: '#fff',
+          backgroundColor: COLORS.primary,
           paddingBottom: 5
         }
       }}
@@ -263,12 +265,14 @@ function MainTabs() {
       <Tab.Screen
         name="Carteirinha"
         component={CarteirinhaScreen}
-        options={{ title: 'Carteirinha' }}
+        options={{ title: 'Carteirinha',  tabBarIcon: ({ color, size }) => (
+          <Ionicons name="card" size={size} color={color} /> )}}
       />
       <Tab.Screen
         name="Recargas"
         component={RecargasScreen}
-        options={{ title: 'Recargas' }}
+        options={{ title: 'Recargas', tabBarIcon: ({ color, size }) => (
+          <Ionicons name="reload" size={size} color={color} /> )}}
       />
     </Tab.Navigator>
   );
@@ -337,6 +341,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   buttonText: {
+    padding: 10,
     color: COLORS.white,
     fontWeight: 'bold',
     fontSize: 16
