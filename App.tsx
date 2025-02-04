@@ -22,7 +22,6 @@ const COLORS = {
   primary: '#4F90D1',    
   background: '#F8F9FA', 
   white: '#fff',
-  grayText: '#777',
   dark: '#333'
 };
 
@@ -45,16 +44,16 @@ function LoginScreen({ navigation }) {
 
       <ScrollView style={styles.contentArea}>
 
-        <View style={styles.formCard}>
+        <View style={styles.formCardLogin}>
           <TextInput
-            style={styles.input}
+            style={styles.inputLogin}
             placeholder="CPF"
             placeholderTextColor="#aaa"
             value={cpf}
             onChangeText={setCpf}
           />
           <TextInput
-            style={styles.input}
+            style={styles.inputLogin}
             placeholder="Senha"
             placeholderTextColor="#aaa"
             secureTextEntry
@@ -62,15 +61,15 @@ function LoginScreen({ navigation }) {
             onChangeText={setSenha}
           />
 
-          <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Entrar</Text>
+          <TouchableOpacity style={styles.buttonLogin} onPress={handleLogin}>
+            <Text style={styles.buttonTextLogin}>Entrar</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={[styles.button, { backgroundColor: COLORS.dark, marginTop: 10 }]}
+            style={[styles.buttonGov, { backgroundColor: COLORS.dark, marginTop: 10 }]}
             onPress={() => alert('Simulação de gov.br')}
           >
-            <Text style={styles.buttonText}>Entrar com gov.br</Text>
+            <Text style={styles.buttonTextGov}>Entrar com gov.br</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -107,37 +106,37 @@ function CadastroScreen({ navigation }) {
       </View>
 
       <ScrollView style={styles.contentArea}>
-        <View style={styles.formCard}>
+        <View style={styles.formCardCadastro}>
           <TextInput
-            style={styles.input}
+            style={styles.inputCadastro}
             placeholder="Nome Completo"
             placeholderTextColor="#aaa"
             value={nome}
             onChangeText={setNome}
           />
           <TextInput
-            style={styles.input}
+            style={styles.inputCadastro}
             placeholder="CPF"
             placeholderTextColor="#aaa"
             value={cpf}
             onChangeText={setCpf}
           />
           <TextInput
-            style={styles.input}
+            style={styles.inputCadastro}
             placeholder="Data de Nascimento (dd/mm/aaaa)"
             placeholderTextColor="#aaa"
             value={nascimento}
             onChangeText={setNascimento}
           />
           <TextInput
-            style={styles.input}
+            style={styles.inputCadastro}
             placeholder="Instituição de Ensino"
             placeholderTextColor="#aaa"
             value={instituicao}
             onChangeText={setInstituicao}
           />
           <TextInput
-            style={styles.input}
+            style={styles.inputCadastro}
             placeholder="Senha"
             placeholderTextColor="#aaa"
             secureTextEntry
@@ -145,7 +144,7 @@ function CadastroScreen({ navigation }) {
             onChangeText={setSenha}
           />
           <TextInput
-            style={styles.input}
+            style={styles.inputCadastro}
             placeholder="Confirme sua Senha"
             placeholderTextColor="#aaa"
             secureTextEntry
@@ -153,8 +152,8 @@ function CadastroScreen({ navigation }) {
             onChangeText={setConfirmSenha}
           />
 
-          <TouchableOpacity style={styles.button} onPress={handleReconhecimento}>
-            <Text style={styles.buttonText}>RECONHECIMENTO FACIAL</Text>
+          <TouchableOpacity style={styles.buttonCadastro} onPress={handleReconhecimento}>
+            <Text style={styles.buttonTextCadastro}>RECONHECIMENTO FACIAL</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -315,7 +314,10 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20
   },
-  formCard: {
+
+  formCardLogin: {
+    marginTop: 180,
+    marginBottom: 30,
     backgroundColor: COLORS.white,
     borderRadius: 8,
     padding: 15,
@@ -323,9 +325,33 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.15,
     shadowRadius: 5,
-    elevation: 3 
+    elevation: 3
   },
-  input: {
+
+  formCardCadastro: {
+    marginTop: 180,
+    marginBottom: 30,
+    backgroundColor: COLORS.white,
+    borderRadius: 8,
+    padding: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.15,
+    shadowRadius: 5,
+    elevation: 3
+  },
+
+  inputLogin: {
+    backgroundColor: '#eee',
+    borderRadius: 5,
+    marginVertical: 5,
+    paddingHorizontal: 12,
+    fontSize: 15,
+    color: COLORS.dark
+  },
+
+  inputCadastro: {
+    padding: 20,
     backgroundColor: '#eee',
     borderRadius: 5,
     marginVertical: 8,
@@ -334,18 +360,51 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: COLORS.dark
   },
-  button: {
+
+  buttonLogin: {
     backgroundColor: COLORS.primary,
     borderRadius: 5,
     paddingVertical: 12,
     alignItems: 'center'
   },
-  buttonText: {
-    padding: 10,
+
+  buttonGov: {
+    backgroundColor: COLORS.white,
+    borderRadius: 5,
+    paddingVertical: 12,
+    alignItems: 'center'
+  },
+
+  buttonTextGov: {
+    padding: 3,
+    fontSize: 25,
+    color: COLORS.white, 
+    borderRadius: 5,
+    alignItems: 'center',
+    fontWeight: 'bold',
+  },
+
+  buttonCadastro: {
+    backgroundColor: COLORS.primary,
+    borderRadius: 5,
+    paddingVertical: 12,
+    alignItems: 'center'
+  },
+
+  buttonTextLogin: {
+    fontSize: 25,
+    padding: 4,
+    color: COLORS.white,
+    fontWeight: 'bold',
+  },
+
+  buttonTextCadastro: {
+    padding: 4,
     color: COLORS.white,
     fontWeight: 'bold',
     fontSize: 16
   },
+
   fakeCamera: {
     width: 220,
     height: 220,
