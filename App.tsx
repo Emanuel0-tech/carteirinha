@@ -15,7 +15,8 @@ import minhaFoto from './assets/profile/face.jpg';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from 'react-native-vector-icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 
 
 const COLORS = {
@@ -41,8 +42,11 @@ function LoginScreen({ navigation }) {
         <Text style={styles.headerTitle}>Login</Text>
       </View>
 
-
       <ScrollView style={styles.contentArea}>
+
+      <Text style={styles.appTitle}>PASSE ONLINE</Text>
+      <Ionicons name="bus" size={100} color={COLORS.primary} style={{ textAlign: 'center'}} />
+
 
         <View style={styles.formCardLogin}>
           <TextInput
@@ -85,7 +89,6 @@ function LoginScreen({ navigation }) {
     </SafeAreaView>
   );
 }
-
 
 function CadastroScreen({ navigation }) {
   const [nome, setNome] = useState('');
@@ -210,7 +213,7 @@ function CarteirinhaScreen() {
           <Text style={styles.infoValue}>18/01/2006</Text>
 
           <Text style={styles.infoLabel}>CPF:</Text>
-          <Text style={styles.infoValue}>400.289.229-01</Text>
+          <Text style={styles.infoValue}>123.456.789-10</Text>
 
           <Text style={styles.infoLabel}>Município/UF:</Text>
           <Text style={styles.infoValue}>União/PI</Text>
@@ -297,6 +300,19 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.background
   },
+
+  appTitle: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: COLORS.primary,
+    textAlign: 'center',
+    marginBottom: 20,
+    marginTop: 10
+  },
+  
+
+
+
   headerArea: {
     backgroundColor: COLORS.primary,
     paddingVertical: 18,
